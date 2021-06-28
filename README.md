@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :products
-- has_many :buy
+- has_many :buy_data
 
 ## productsテーブル
 
@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :buy
+- has_one :buy_data
 
 
 ## street_addressテーブル
@@ -51,9 +51,9 @@
 
 ### Association
 
-- has_one :buy
+- has_one :buy_data
 
-## buyテーブル
+## buy_dataテーブル
 
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
