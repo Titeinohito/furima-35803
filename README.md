@@ -1,24 +1,58 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| name                | string     | null: false |
+| name_kana           | string     | null: false |
+| email               | string     | null: false |
+| password            | string     | null: false |
+| nickname            | string     | null: false |
+| birthday            | string     | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :products
+- has_many :buyers
 
-* Configuration
+## productsテーブル
 
-* Database creation
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| name_product        | string     | null: false |
+| description         | string     | null: false |
+| category            | string     | null: false |
+| condition           | string     | null: false |
+| charges             | string     | null: false |
+| area                | string     | null: false |
+| ship_day            | string     | null: false |
+| price               | string     | null: false |
+| image               |            |             |
+| user                | reference  |             |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_one :buyer
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## buyersテーブル
 
-* ...
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| creditcard_number   | string     | null: false |
+| creditcard_date     | string     | null: false |
+| creditcard_code     | string     | null: false |
+| post_code           | string     | null: false |
+| prefecture          | string     | null: false |
+| municipality        | string     | null: false |
+| house_number        | string     | null: false |
+| building_number     | string     | null: false |
+| phone_number        | string     | null: false |
+| user                | reference  |             |
+| product             | reference  |             |
+
+### Association
+
+- belongs_to :user
+- belongs_to :product
