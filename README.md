@@ -6,7 +6,7 @@
 | name                | string     | null: false |
 | name_kana           | string     | null: false |
 | email               | string     | null: false |
-| password            | string     | null: false |
+| encrypted_password  | string     | null: false |
 | nickname            | string     | null: false |
 | birthday            | string     | null: false |
 
@@ -47,7 +47,7 @@
 | prefecture          | string     | null: false |
 | municipality        | string     | null: false |
 | house_number        | string     | null: false |
-| building_number     | string     | null: false |
+| building_name       | string     | null: false |
 | phone_number        | string     | null: false |
 | user                | reference  |             |
 | product             | reference  |             |
