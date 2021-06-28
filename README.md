@@ -23,11 +23,11 @@
 | ------------------- | ---------- | ----------------- |
 | name                | string     | null: false       |
 | description         | text       | null: false       |
-| category_id         | string     | null: false       |
-| condition_id        | string     | null: false       |
-| charges_id          | string     | null: false       |
-| area_id             | string     | null: false       |
-| ship_day_id         | string     | null: false       |
+| category_id         | integer    | null: false       |
+| condition_id        | integer    | null: false       |
+| charges_id          | integer    | null: false       |
+| area_id             | integer    | null: false       |
+| ship_day_id         | integer    | null: false       |
 | price               | integer    | null: false       |
 | user                | references | foreign_key: true |
 
@@ -42,7 +42,7 @@
 | Column              | Type       | Options           |
 | ------------------- | ---------- | ----------------- |
 | post_code           | string     | null: false       |
-| area_id             | string     | null: false       |
+| area_id             | integer    | null: false       |
 | municipality        | string     | null: false       |
 | house_number        | string     | null: false       |
 | building_name       | string     |                   |
