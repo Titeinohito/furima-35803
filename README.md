@@ -19,18 +19,17 @@
 
 ## productsテーブル
 
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| name_product        | string     | null: false |
-| description         | text       | null: false |
-| category            | string     | null: false |
-| condition           | string     | null: false |
-| charges             | string     | null: false |
-| area                | string     | null: false |
-| ship_day            | string     | null: false |
-| price               | string     | null: false |
-| image               |            |             |
-| user                | reference  |             |
+| Column              | Type       | Options           |
+| ------------------- | ---------- | ----------------- |
+| name                | string     | null: false       |
+| description         | text       | null: false       |
+| category_id         |            |                   |
+| condition_id        |            |                   |
+| charges_id          |            |                   |
+| area_id             |            |                   |
+| ship_day_id         |            |                   |
+| price               | integer    | null: false       |
+| user                | references | foreign_key: true |
 
 ### Association
 
@@ -40,27 +39,28 @@
 
 ## street_addressテーブル
 
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| post_code           | string     | null: false |
-| prefecture          |            |             |
-| municipality        | string     | null: false |
-| house_number        | string     | null: false |
-| building_name       | string     |             |
-| phone_number        | string     | null: false |
+| Column              | Type       | Options           |
+| ------------------- | ---------- | ----------------- |
+| post_code           | string     | null: false       |
+| area_id             |            |                   |
+| municipality        | string     | null: false       |
+| house_number        | string     | null: false       |
+| building_name       | string     |                   |
+| phone_number        | string     | null: false       |
+| buy_date            | references | foreign_key: true |
 
 ### Association
 
-- has_one :buy_data
+- belongs_to :buy_data
 
 ## buy_dataテーブル
 
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| user                | reference  |             |
-| product             | reference  |             |
-| street_address      | reference  |             |
+| Column              | Type       | Options           |
+| ------------------- | ---------- | ----------------- |
+| user                | references |                   |
+| product             | references | foreign_key: true |
+
 
 belongs_to :user
 belongs_to :product
-belongs_to :street_address
+has_one :street_address
