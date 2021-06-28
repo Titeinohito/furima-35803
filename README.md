@@ -1,26 +1,28 @@
 
 ## usersテーブル
 
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| name                | string     | null: false |
-| name_kana           | string     | null: false |
-| email               | string     | null: false |
-| encrypted_password  | string     | null: false |
-| nickname            | string     | null: false |
-| birthday            | string     | null: false |
+| Column              | Type       | Options                  |
+| ------------------- | ---------- | ------------------------ |
+| first_name          | string     | null: false              |
+| last_name           | string     | null: false              |
+| first_name_kana     | string     | null: false              |
+| last_name_kana      | string     | null: false              |
+| email               | string     | null: false unique: true |
+| encrypted_password  | string     | null: false              |
+| nickname            | string     | null: false              |
+| birthday            | date       | null: false              |
 
 ### Association
 
 - has_many :products
-- has_many :buyers
+- has_many :buy
 
 ## productsテーブル
 
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
 | name_product        | string     | null: false |
-| description         | string     | null: false |
+| description         | text       | null: false |
 | category            | string     | null: false |
 | condition           | string     | null: false |
 | charges             | string     | null: false |
@@ -33,26 +35,32 @@
 ### Association
 
 - belongs_to :user
-- has_one :buyer
+- has_one :buy
 
 
-## buyersテーブル
+## street_addressテーブル
 
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
-| creditcard_number   | string     | null: false |
-| creditcard_date     | string     | null: false |
-| creditcard_code     | string     | null: false |
 | post_code           | string     | null: false |
-| prefecture          | string     | null: false |
+| prefecture          |            |             |
 | municipality        | string     | null: false |
 | house_number        | string     | null: false |
-| building_name       | string     | null: false |
+| building_name       | string     |             |
 | phone_number        | string     | null: false |
-| user                | reference  |             |
-| product             | reference  |             |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :product
+- has_one :buy
+
+## buyテーブル
+
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| user                | reference  |             |
+| product             | reference  |             |
+| street_address      | reference  |             |
+
+belongs_to :user
+belongs_to :product
+belongs_to :street_address
