@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
 
-      it "名字がかな全角カナ漢字びときに登録できる" do
+      it "名字がかな全角カナ漢字のときに登録できる" do
         @user.first_name ='あア阿'
         expect(@user).to be_valid
       end
@@ -108,8 +108,20 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Last name is invalid")
       end
 
+      it "名前がかな全角カナ漢字以外のときに登録できない" do
+        @user.last_name = 'aaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
+      end
+
       it "名字が空のときに登録できない" do
         @user.first_name = ' '
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+
+      it "名字がかな全角カナ漢字以外のときに登録できない" do
+        @user.first_name = 'aaa'
         @user.valid?
         expect(@user.errors.full_messages).to include("First name is invalid")
       end
