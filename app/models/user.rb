@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   length_password = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
-  length_name = /\A[ぁ-ゔァ-ヴ一-龠々]+\z/
+  length_name = /\A[ぁ-ゔァ-ヴ一-龠々ー]+\z/
   length_name_kana = /\A[ァ-ヴ]+\z/
 
   # Include default devise modules. Others available are:
