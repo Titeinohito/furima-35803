@@ -123,6 +123,7 @@ RSpec.describe User, type: :model do
       it "名前のカナが全角カナ以外のときに登録できない" do
         @user.last_name_kana = 'あああ'
         @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
       end
 
       it "名字のカナが空のときに登録できない" do
