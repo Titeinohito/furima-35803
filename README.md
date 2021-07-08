@@ -14,10 +14,10 @@
 
 ### Association
 
-- has_many :products
-- has_many :buy_data
+- has_many :items
+- has_many :buy_datas
 
-## productsテーブル
+## itemsテーブル
 
 | Column              | Type       | Options           |
 | ------------------- | ---------- | ----------------- |
@@ -37,7 +37,7 @@
 - has_one :buy_data
 
 
-## street_addressテーブル
+## ordersテーブル
 
 | Column              | Type       | Options           |
 | ------------------- | ---------- | ----------------- |
@@ -58,9 +58,9 @@
 | Column              | Type       | Options           |
 | ------------------- | ---------- | ----------------- |
 | user                | references | foreign_key: true |
-| product             | references | foreign_key: true |
+| item                | references | foreign_key: true |
 
 
 belongs_to :user
-belongs_to :product
-has_one :street_address
+belongs_to :item
+has_one orders
