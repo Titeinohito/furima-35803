@@ -23,4 +23,6 @@ class User < ApplicationRecord
   end
 
   validates :password,:password_confirmation, format: { with: length_password}
+
+  has_many :items
 end

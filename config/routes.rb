@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   devise_for :users
-  # resources :order
-  # resources :item
-  # resources :buy_data
+  resources :orders
+  resources :items
+  resources :buy_datas
 end
