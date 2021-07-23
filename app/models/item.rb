@@ -1,21 +1,20 @@
 class Item < ApplicationRecord
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+
   with_options presence: true do
+    
     validates :name, length: {maximum: 40}
     validates :descriptin, length: {maximum: 1000}
-    validates :price, numericality: {in: 300..9999999}, format: { with: /\A[0-9]+\z/}
+    validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
     validates :image
-  end
-  with_options format: { without: /1/ } do
-    validates :categry_id
-    validates :condition_id
-    validates :charges_id
-    validates :area_id
-    validates :ship_day_id
-  end
+    validates :categry_id, numericality: {greater_than_or_equal_to: 2, less_than_or_equal_to: 11}
+    validates :condition_id, numericality: {greater_than_or_equal_to: 2, less_than_or_equal_to: 7}
+    validates :charges_id, numericality: {greater_than_or_equal_to: 2, less_than_or_equal_to: 3}
+    validates :area_id, numericality: {greater_than_or_equal_to: 2, less_than_or_equal_to: 48}
+    validates :ship_day_id, numericality: {greater_than_or_equal_to: 2, less_than_or_equal_to: 4}
 
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
+  end
 
   belongs_to_active_hash :area
   belongs_to_active_hash :category
