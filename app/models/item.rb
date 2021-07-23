@@ -13,6 +13,7 @@ class Item < ApplicationRecord
     validates :charges_id, numericality: {greater_than_or_equal_to: 2, less_than_or_equal_to: 3}
     validates :area_id, numericality: {greater_than_or_equal_to: 2, less_than_or_equal_to: 48}
     validates :ship_day_id, numericality: {greater_than_or_equal_to: 2, less_than_or_equal_to: 4}
+    validates :user
 
   end
 

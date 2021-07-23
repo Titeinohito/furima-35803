@@ -170,15 +170,39 @@ RSpec.describe Item, type: :model do
       end
 
       it '値段が規定の値以下のときに登録できない' do
-        @item.price = 20
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
 
       it '値段が規定の値以上のときに登録できない' do
-        @item.price = 1000000000000
+        @item.price = 10000000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+
+      it '値段が全角では登録できない' do
+        @item.price = '１０００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it '値段が半角英数混合だと登録できない' do
+        @item.price = '111a'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it '値段が半角英語だと登録できない' do
+        @item.price = 'aaaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it '紐づくユーザーがいなければ登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User can't be blank")
       end
 
     end
