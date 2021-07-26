@@ -23,9 +23,9 @@
 | ------------------- | ---------- | ----------------- |
 | name                | string     | null: false       |
 | description         | text       | null: false       |
-| categry_id         | integer    | null: false       |
+| category_id         | integer    | null: false       |
 | condition_id        | integer    | null: false       |
-| charges_id          | integer    | null: false       |
+| charge_id          | integer    | null: false       |
 | area_id             | integer    | null: false       |
 | ship_day_id         | integer    | null: false       |
 | price               | integer    | null: false       |

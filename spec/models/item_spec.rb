@@ -23,7 +23,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーのIDが規定の数値であれば登録できる' do
-        @item.categry_id = 2
+        @item.category_id = 2
         expect(@item).to be_valid
       end
 
@@ -33,7 +33,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '手数料のIDが規定の数値であれば登録できる' do
-        @item.charges_id = 2
+        @item.charge_id = 2
         expect(@item).to be_valid
       end
 
@@ -81,21 +81,21 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーが空のときに登録できない' do
-        @item.categry_id = ' '
+        @item.category_id = ' '
         @item.valid?
-        expect(@item.errors.full_messages).to include("Categry can't be blank")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it 'カテゴリーが規定の値以下のときに登録できない' do
-        @item.categry_id = 1
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Categry must be greater than or equal to 2')
+        expect(@item.errors.full_messages).to include('Category must be greater than or equal to 2')
       end
 
       it 'カテゴリーが規定の値以上のときに登録できない' do
-        @item.categry_id = 50
+        @item.category_id = 50
         @item.valid?
-        expect(@item.errors.full_messages).to include('Categry must be less than or equal to 11')
+        expect(@item.errors.full_messages).to include('Category must be less than or equal to 11')
       end
 
       it 'コンディションが空のときに登録できない' do
@@ -117,21 +117,21 @@ RSpec.describe Item, type: :model do
       end
 
       it '送料が空のときに登録できない' do
-        @item.charges_id = ' '
+        @item.charge_id = ' '
         @item.valid?
-        expect(@item.errors.full_messages).to include("Charges can't be blank")
+        expect(@item.errors.full_messages).to include("Charge can't be blank")
       end
 
       it '送料が規定の値以下のときに登録できない' do
-        @item.charges_id = 1
+        @item.charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Charges must be greater than or equal to 2')
+        expect(@item.errors.full_messages).to include('Charge must be greater than or equal to 2')
       end
 
       it '送料が規定の値以上のときに登録できない' do
-        @item.charges_id = 50
+        @item.charge_id = 50
         @item.valid?
-        expect(@item.errors.full_messages).to include('Charges must be less than or equal to 3')
+        expect(@item.errors.full_messages).to include('Charge must be less than or equal to 3')
       end
 
       it '地域が空のときに登録できない' do
