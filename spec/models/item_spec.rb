@@ -18,7 +18,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '説明が規定の文字数内であれば登録できる' do
-        @item.descriptin = 'aaaaaaaaaaaaa'
+        @item.description = 'aaaaaaaaaaaaa'
         expect(@item).to be_valid
       end
 
@@ -68,16 +68,16 @@ RSpec.describe Item, type: :model do
       end
 
       it '説明が空のときに登録できない' do
-        @item.descriptin = ' '
+        @item.description = ' '
         @item.valid?
-        expect(@item.errors.full_messages).to include("Descriptin can't be blank")
+        expect(@item.errors.full_messages).to include("Description can't be blank")
       end
 
       it '説明の文字数が規定の値を超えた場合に登録できない' do
         tester = 'a' * 1100
-        @item.descriptin = tester
+        @item.description = tester
         @item.valid?
-        expect(@item.errors.full_messages).to include('Descriptin is too long (maximum is 1000 characters)')
+        expect(@item.errors.full_messages).to include('Description is too long (maximum is 1000 characters)')
       end
 
       it 'カテゴリーが空のときに登録できない' do
