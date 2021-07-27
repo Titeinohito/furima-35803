@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :item_params]
+  before_action :set_item, except: [:index, :new, :create]
   before_action :redirecting, only: [:edit, :update]
 
   def index
@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
