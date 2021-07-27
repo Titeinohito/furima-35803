@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   #resources :orders
-  resources :items, only: [:new, :create]
+  resources :items, only: [:index ,:new, :create, :show]
   #resources :buy_datas
 end
