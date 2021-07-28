@@ -19,6 +19,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :charge
   belongs_to_active_hash :condition
   belongs_to_active_hash :ship_day
-  belongs_to             :user
+
   has_one_attached       :image
+
+  belongs_to             :user
+  has_many :buy_history
 end

@@ -7,11 +7,10 @@ class Order < ApplicationRecord
     validates :municipality
     validates :house_number
     validates :phone_number
-    validates :user
+    validates :buy_history
   end
 
   belongs_to_active_hash :area
-  
-  belongs_to :user
-  has_many :buy_history
+
+  belongs_to :buy_history
 end

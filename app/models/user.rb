@@ -24,4 +24,5 @@ class User < ApplicationRecord
   validates :password, :password_confirmation, format: { with: length_password }
 
   has_many :items
+  has_many :buy_history
 end
