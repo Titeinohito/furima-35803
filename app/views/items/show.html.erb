@@ -9,9 +9,11 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
      
-      <%# <div class="sold-out">
+     <% if @item.id == BuyHistory.find_by(item_id: @item.id).item.id %>
+      <div class="sold-out">
         <span>Sold Out!!</span>
-      </div> %>
+      </div>
+    <% end %>
 
     </div>
     <div class="item-price-box">
@@ -22,6 +24,8 @@
         <%= @item.charge.name %>
       </span>
     </div>
+
+    <% unless @item.id == BuyHistory.find_by(item_id: @item.id).item.id %>
     <% if user_signed_in? %>
       <% if current_user.id == @item.user_id %>
         <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
@@ -30,6 +34,7 @@
       <% else %>
         <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
       <% end %>
+    <% end %>
     <% end %>
 
     <div class="item-explain-box">
