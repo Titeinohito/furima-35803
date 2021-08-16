@@ -87,19 +87,19 @@ RSpec.describe OrderBuyHistory, type: :model do
       it '電話番号が規定の値以上のとき購入できない' do
         @order.phone_number = '100000000000'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number is invalid")
+        expect(@order.errors.full_messages).to include('Phone number is invalid')
       end
 
       it '電話番号が規定の値以下のとき購入できない' do
         @order.phone_number = '100000000'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number is invalid")
+        expect(@order.errors.full_messages).to include('Phone number is invalid')
       end
 
       it '電話番号が英数混合のとき購入できない' do
         @order.phone_number = '123456789ab'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number is invalid")
+        expect(@order.errors.full_messages).to include('Phone number is invalid')
       end
 
       it '紐づくユーザーがないときに購入できない' do

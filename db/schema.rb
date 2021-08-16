@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_28_052940) do
+ActiveRecord::Schema.define(version: 2021_07_08_062519) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -92,4 +92,5 @@ ActiveRecord::Schema.define(version: 2021_07_28_052940) do
   add_foreign_key "buy_histories", "items"
   add_foreign_key "buy_histories", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "orders", "buy_histories"
 end
