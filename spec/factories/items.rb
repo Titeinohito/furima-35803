@@ -9,5 +9,9 @@ FactoryBot.define do
     ship_day_id     { Faker::Number.within(range: 2..4) }
     price           { Faker::Number.within(range: 300..9_999_999) }
     association :user
+
+    trait :skip_validate do
+      to_create { |instance| instance.save(validate: false) }
+    end
   end
 end

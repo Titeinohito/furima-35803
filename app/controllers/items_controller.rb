@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to action: :index if BuyHistory.find_by(item_id: params[:id]).present?
   end
 
   def update

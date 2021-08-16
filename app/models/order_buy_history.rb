@@ -8,17 +8,14 @@ class OrderBuyHistory
   with_options presence: true do
     # Order
     validates :post_code, format: { with: /\A\d{3}-\d{4}\z/ }
-    validates :area_i, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 48 }
+    validates :area_id, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 48 }
     validates :municipality
     validates :house_number
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
-    
+
     # Buy_history
     validates :user_id
     validates :item_id
-
-    # credit
-    validates :token
   end
 
   def save
