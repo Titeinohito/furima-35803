@@ -7,10 +7,6 @@ class OrdersController < ApplicationController
     @order_buy_history = OrderBuyHistory.new
   end
 
-  def new
-    @order_buy_history = OrderBuyHistory.new
-  end
-
   def create
     @order_buy_history = OrderBuyHistory.new(buy_history_params)
     if @order_buy_history.valid? && !params[:token].nil?
