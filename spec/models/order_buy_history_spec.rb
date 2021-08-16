@@ -84,8 +84,14 @@ RSpec.describe OrderBuyHistory, type: :model do
         expect(@order.errors.full_messages).to include("Phone number can't be blank")
       end
 
-      it '電話番号が12桁以上のとき購入できない' do
+      it '電話番号が規定の値以上のとき購入できない' do
         @order.phone_number = '100000000000'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it '電話番号が規定の値以下のとき購入できない' do
+        @order.phone_number = '100000000'
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone number is invalid")
       end
@@ -111,7 +117,7 @@ RSpec.describe OrderBuyHistory, type: :model do
       it 'カード情報が正常ではないときに購入できない' do
         @order.token = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("Token can't be blamk")
+        expect(@order.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
