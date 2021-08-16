@@ -1,2 +1,0 @@
-class BuyDatum < ApplicationRecord
-end
