@@ -3,18 +3,18 @@ class OrdersController < ApplicationController
   before_action :redirectinger
 
   def index
-    @item = Item.find(params[:item_id])
-    @order_buy_history = OrderBuyHistory.new
+    @item = item_find
+    order
   end
 
   def create
-    @order_buy_history = OrderBuyHistory.new(buy_history_params)
+    order(buy_history_params)
     if @order_buy_history.valid?
       pay_item
       @order_buy_history.save
       redirect_to root_path
     else
-      @item = Item.find_by(id: params[:item_id])
+      @item = item_find
       render action: :index
     end
   end
@@ -30,19 +30,25 @@ class OrdersController < ApplicationController
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: Item.find_by(params[:item_id]).price,
+      amount: item_find.price,
       card: params[:token],
       currency: 'jpy'
     )
   end
 
   def redirectinger
-    if current_user.id == Item.find_by(id: params[:item_id]).user.id
-      redirect_to root_path
-    elsif user_signed_in? == false
+    if current_user.id == item_find.user.id
       redirect_to root_path
     elsif BuyHistory.find_by(item_id: params[:item_id]).present?
       redirect_to root_path
     end
+  end
+
+  def order
+    @order_buy_history = OrderBuyHistory.new
+  end
+
+  def item_find
+    Item.find_by(id: params[:item_id])
   end
 end

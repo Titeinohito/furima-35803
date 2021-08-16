@@ -23,6 +23,6 @@ class OrderBuyHistory
   def save
     buy_history = BuyHistory.create(user_id: user_id, item_id: item_id)
     Order.create(post_code: post_code, area_id: area_id, municipality: municipality, house_number: house_number,
-                 building_name: building_name, phone_number: phone_number, buy_history_id: buy_history.id)
+                 building_name: building_name, phone_number: phone_number)
   end
 end

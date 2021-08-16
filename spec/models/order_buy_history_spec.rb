@@ -22,6 +22,11 @@ RSpec.describe OrderBuyHistory, type: :model do
         @order.phone_number = '12345678901'
         expect(@order).to be_valid
       end
+
+      it '建物名がなくても登録できる' do
+        @order.building_name = nil
+        expect(@order).to be_valid
+      end
     end
 
     context '商品の購入ができないとき' do
