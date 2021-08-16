@@ -49,6 +49,6 @@ class OrdersController < ApplicationController
   end
 
   def item_find
-    Item.find_by(id: params[:item_id])
+    Item.find(params[:item_id])
   end
 end

@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :items
-- has_many :buy_history
+- has_many :buy_histories
 
 ## itemsテーブル
 
@@ -53,7 +53,7 @@
 
 - belongs_to :buy_history
 
-## buy_historyテーブル
+## buy_historiesテーブル
 
 | Column              | Type       | Options           |
 | ------------------- | ---------- | ----------------- |
