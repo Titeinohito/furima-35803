@@ -9,7 +9,7 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
      
-     <% if BuyHistory.find_by(item_id: @item.id).present? %>
+     <% if @item.buy_history.present? %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>

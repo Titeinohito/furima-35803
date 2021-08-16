@@ -73,6 +73,24 @@ RSpec.describe OrderBuyHistory, type: :model do
         expect(@order.errors.full_messages).to include("House number can't be blank")
       end
 
+      it '電話番号が空のとき購入できない' do
+        @order.phone_number = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number can't be blank")
+      end
+
+      it '電話番号が12桁以上のとき購入できない' do
+        @order.phone_number = '100000000000'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it '電話番号が英数混合のとき購入できない' do
+        @order.phone_number = '123456789ab'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number is invalid")
+      end
+
       it '紐づくユーザーがないときに購入できない' do
         @order.user_id = nil
         @order.valid?
@@ -83,6 +101,12 @@ RSpec.describe OrderBuyHistory, type: :model do
         @order.item_id = nil
         @order.valid?
         expect(@order.errors.full_messages).to include("Item can't be blank")
+      end
+
+      it 'カード情報が正常ではないときに購入できない' do
+        @order.token = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blamk")
       end
     end
   end

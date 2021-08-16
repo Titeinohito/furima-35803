@@ -3,13 +3,13 @@ class OrdersController < ApplicationController
   before_action :redirectinger
 
   def index
-    @item = Item.find_by(id: params[:item_id])
+    @item = Item.find(params[:item_id])
     @order_buy_history = OrderBuyHistory.new
   end
 
   def create
     @order_buy_history = OrderBuyHistory.new(buy_history_params)
-    if @order_buy_history.valid? && !params[:token].nil?
+    if @order_buy_history.valid?
       pay_item
       @order_buy_history.save
       redirect_to root_path
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
 
   def buy_history_params
     params.require(:order_buy_history).permit(:post_code, :area_id, :municipality, :house_number, :building_name, :phone_number).merge(
-      item_id: params[:item_id], user_id: current_user.id
+      item_id: params[:item_id], user_id: current_user.id, token: params[:token]
     )
   end
 

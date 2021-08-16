@@ -16,6 +16,8 @@ class OrderBuyHistory
     # Buy_history
     validates :user_id
     validates :item_id
+
+    validates :token
   end
 
   def save
