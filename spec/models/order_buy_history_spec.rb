@@ -84,8 +84,6 @@ RSpec.describe OrderBuyHistory, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Item can't be blank")
       end
-      
-      end
     end
   end
 end
