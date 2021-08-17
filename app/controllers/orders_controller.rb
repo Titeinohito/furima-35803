@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order(buy_history_params)
+    @order_buy_history = OrderBuyHistory.new(buy_history_params)
     if @order_buy_history.valid?
       pay_item
       @order_buy_history.save
